@@ -13,13 +13,13 @@ export class TodoItem extends Component {
               className='mx-2 text-success'
               onClick={() => handleEdit(todos.id)}
             >
-              <i class="fa fa-edit fa-lg"></i>
+              <i style={{cursor:'pointer'}} class="fa fa-edit fa-lg"></i>
             </span>
             <span
               className='mx-2 text-danger'
               onClick={() => handleRemove(todos.id)}
             >
-              <i className='fa fa-trash fa-lg'></i>
+              <i style={{cursor:'pointer'}} className='fa fa-trash fa-lg'></i>
             </span>
           </div>
         </li>
