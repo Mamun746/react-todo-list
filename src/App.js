@@ -13,53 +13,51 @@ class App extends Component {
   };
   handleChange = (e) => {
     this.setState({
-      inputTodo:e.target.value
-    })
+      inputTodo: e.target.value
+    });
   };
   handleSubmit = (e) => {
-    e.preventDefault()
-    const newTodo={
-      id:this.state.id,
-      title:this.state.inputTodo
-    }
-    const updatedTodo=[...this.state.todos,newTodo]
+    e.preventDefault();
+    const newTodo = {
+      id: this.state.id,
+      title: this.state.inputTodo
+    };
+    const updatedTodo = [...this.state.todos, newTodo];
     this.setState({
-      todos:updatedTodo,
-      inputTodo:'',
-      id:uuid(),
-      editTodo:false
-    })
+      todos: updatedTodo,
+      inputTodo: "",
+      id: uuid(),
+      editTodo: false
+    });
   };
-  
+
   handleRemove = (id) => {
-    const sortTodo=this.state.todos.filter((todo)=>{
-      return todo.id !==id
-    })
+    const sortTodo = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
     this.setState({
-      todos:sortTodo
-    })
+      todos: sortTodo
+    });
   };
   handleEdit = (id) => {
-    const filteredTodo=this.state.todos.filter((todo)=>{
-      return todo.id !==id
-    })
-    const selectedTodo=this.state.todos.find((todo)=>{
-      return todo.id===id
-    })
-    
+    const filteredTodo = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    const selectedTodo = this.state.todos.find((todo) => {
+      return todo.id === id;
+    });
+
     this.setState({
-      todos:filteredTodo,
-      inputTodo:selectedTodo.title,
-      id:id,
-      editTodo:true
-      
-    })
-    
+      todos: filteredTodo,
+      inputTodo: selectedTodo.title,
+      id: id,
+      editTodo: true
+    });
   };
   clearList = (e) => {
     this.setState({
-      todos:[]
-    })
+      todos: []
+    });
   };
   re;
   render() {
