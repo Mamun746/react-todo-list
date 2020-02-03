@@ -59,13 +59,36 @@ class App extends Component {
       todos: []
     });
   };
-  re;
+
+  // Data save localhost
+  componentDidMount(){
+    try{
+        const json=localStorage.getItem('todos')
+    const todos=JSON.parse(json)
+
+    if(todos){
+        this.setState(()=>({
+            todos:todos
+        }))
+    }
+
+    }catch(e){
+
+    } 
+}
+  componentDidUpdate(prevProps,prevState) {
+    if(prevState.todos.length !== this.state.todos.length){
+      const json=JSON.stringify(this.state.todos)
+      localStorage.setItem('todos',json)
+   
+  }
+  }
   render() {
     return (
       <div className='container'>
         <div className='row'>
           <div className='col-10 mx-auto col-md-8 mt-5'>
-            <h3 className='text-capitalize text-center'>Todo List</h3>
+            <h3 className='text-capitalize text-center'>Add Todo</h3>
             <TodoInput
               inputTodo={this.state.inputTodo}
               handleChange={this.handleChange}

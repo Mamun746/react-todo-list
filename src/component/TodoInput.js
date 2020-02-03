@@ -8,8 +8,8 @@ export class TodoInput extends Component {
         <form onSubmit={handleSubmit}>
           <div className='input-group'>
             <div className='input-group-prepend'>
-              <div className='input-group-text bg-primary text-white'>
-                <i className='fas fa-book' />
+              <div className='input-group-text bg-primary text-white'> 
+                <i className="fa fa-th-list"></i>
               </div>
             </div>
             <input

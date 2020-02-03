@@ -7,7 +7,7 @@ class TodoList extends Component {
 
     return (
       <ul className='list-group my-5'>
-        <h3 className='text-capitalize text-center'>Todo List</h3>
+        <h3 className='text-capitalize text-center'>Makku's Todo List</h3>
         {todos.map((todo) => {
           return (
             <TodoItem

@@ -13,13 +13,13 @@ export class TodoItem extends Component {
               className='mx-2 text-success'
               onClick={() => handleEdit(todos.id)}
             >
-              edit<i className='fas fa-edit'></i>
+              <i class="fa fa-edit fa-lg"></i>
             </span>
             <span
               className='mx-2 text-danger'
               onClick={() => handleRemove(todos.id)}
             >
-              X<i className='fas fa-trash'></i>
+              <i className='fa fa-trash fa-lg'></i>
             </span>
           </div>
         </li>
