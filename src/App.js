@@ -7,27 +7,59 @@ import TodoInput from "./component/TodoInput";
 class App extends Component {
   state = {
     inputTodo: "",
-    todos: [
-      { id: 1, title: "wake up in the morning" },
-      { id: 2, title: "prayer" }
-    ],
-    id: uuid,
+    todos: [],
+    id: uuid(),
     editTodo: false
   };
   handleChange = (e) => {
-    console.log("handle Change");
+    this.setState({
+      inputTodo:e.target.value
+    })
   };
   handleSubmit = (e) => {
-    console.log("handle Submit");
+    e.preventDefault()
+    const newTodo={
+      id:this.state.id,
+      title:this.state.inputTodo
+    }
+    const updatedTodo=[...this.state.todos,newTodo]
+    this.setState({
+      todos:updatedTodo,
+      inputTodo:'',
+      id:uuid(),
+      editTodo:false
+    })
+  };
+  
+  handleRemove = (id) => {
+    const sortTodo=this.state.todos.filter((todo)=>{
+      return todo.id !==id
+    })
+    this.setState({
+      todos:sortTodo
+    })
+  };
+  handleEdit = (id) => {
+    const filteredTodo=this.state.todos.filter((todo)=>{
+      return todo.id !==id
+    })
+    const selectedTodo=this.state.todos.find((todo)=>{
+      return todo.id===id
+    })
+    
+    this.setState({
+      todos:filteredTodo,
+      inputTodo:selectedTodo.title,
+      id:id,
+      editTodo:true
+      
+    })
+    
   };
   clearList = (e) => {
-    console.log("clear list");
-  };
-  handleRemove = (e) => {
-    console.log("handle remove");
-  };
-  handleEdit = (e) => {
-    console.log("handle edit");
+    this.setState({
+      todos:[]
+    })
   };
   re;
   render() {
@@ -46,6 +78,7 @@ class App extends Component {
               todos={this.state.todos}
               handleRemove={this.handleRemove}
               handleEdit={this.handleEdit}
+              clearList={this.clearList}
             />
           </div>
         </div>
